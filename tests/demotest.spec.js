@@ -1,32 +1,45 @@
-import { test, expect } from '@playwright/test';
+// import { test, expect, page } from '@playwright/test';
+
+// test.beforeEach(async ({ page }) => {
+//     // Go to the login page
+//     await page.goto('https://www.saucedemo.com/');
+//     // Enter username and password
+//     await page.locator("//input[@name='user-name']").fill('standard_user');
+//     await page.locator("//input[@name='password']").fill('secret_sauce');
+//     // Click on the login button
+//     await page.locator("//input[@id='login-button']").click();
+//     // Check that the products title is displayed
+//     const locator = page.locator("//span[contains(text(),'Products')]");
+//     await expect(locator).toHaveText(/Products/);
+//     // Wait for 3 seconds
+//     await page.waitForTimeout(3000)
+// })
+
+// async function checkCart(quantity) {
+//     // Click on the cart button
+//     const cartButtonLocator = page.locator("//a[@class='shopping_cart_link']")
+//     await cartButtonLocator.click();
+//     const cartQuantityLocator = page.locator("//span[@class='shopping_cart_badge']");
+//     // Check that the cart quantity is correct
+//     await expect(cartQuantityLocator).toHaveText(quantity);
+// }
+// test('User can add multiple products to the cart from the inventory page', async ({ page }) => {
+//     // Click on the add to cart buttons for the bike light and the t-shirt
+//     await page.locator('//*[@id="add-to-cart-sauce-labs-bike-light"]').click();
+//     await page.locator('//*[@id="add-to-cart-test.allthethings()-t-shirt-(red)"]').click();
+//     // Click on the onesie link to go to its detail page
+//     await page.locator("//div[contains(text(),'Sauce Labs Onesie')]").click();
+//     // Click on the add to cart button for the onesie
+//     await page.locator('//*[@id="add-to-cart-sauce-labs-onesie"]').click();
+//     await page.waitForTimeout(3000)
+//     // Check that the cart quantity is 3
+//     await checkCart('3');
+// })
+// test.afterEach(async ({ page }) => {
+//     // Close the page
+//     await page.close()
+// })
 
 
-test.beforeEach(async ({ page }) => {
-    await page.goto('https://www.saucedemo.com/');
-    await page.locator("//input[@name='user-name']").click()
-    await page.locator("//input[@name='user-name']").fill('standard_user');
-    await page.locator("//input[@name='password']").click()
-    await page.locator("//input[@name='password']").fill('secret_sauce');
-    await page.locator("//input[@id='login-button']").click();
-    await page.waitForURL('https://www.saucedemo.com/inventory.html')
-    await page.waitForTimeout(3000)
-})
-test.afterEach(async ({ page }) => {
-    await page.close()
-})
-test('Add product to add to cart successfully', async ({ page }) => {
-    await page.locator('//*[@id="add-to-cart-sauce-labs-bike-light"]').click();
-    await page.locator('//*[@id="add-to-cart-test.allthethings()-t-shirt-(red)"]').click();
-    await page.locator("//div[contains(text(),'Sauce Labs Onesie')]").click();
-    await page.waitForURL('https://www.saucedemo.com/inventory-item.html?id=2')
-    await page.locator('//*[@id="add-to-cart-sauce-labs-onesie"]').click();
-    await page.waitForTimeout(3000)
-
-})
-    // test('logout', async ({ page }) => {
-        // await page.locator('text=Open Menu').click();
-        // await page.locator('text=Logout').click();
-        // await page.waitForURL('https://www.saucedemo.com')
-    // })
 
 
